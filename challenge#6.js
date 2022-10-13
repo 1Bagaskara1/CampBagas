@@ -17,9 +17,10 @@ function sentencesManipulation(sentence) {
     }
     // console.log(arrayGabungan)
     // console.log(arrayGabungan2[1])
-    console.log(arrayGabungan.toString().replace(/,/g, " "))
+    console.log(arrayGabungan.join(" "))
 }
 
 sentencesManipulation('ibu pergi ke pasar bersama aku');
 sentencesManipulation('ayam pulang ke kadang ikan');
+
 
