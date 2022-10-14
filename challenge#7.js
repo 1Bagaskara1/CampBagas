@@ -19,4 +19,5 @@ console.log(weirdMultiply(39))
 console.log(weirdMultiply(999))
 console.log(weirdMultiply(3))
 console.log(weirdMultiply(278))
+console.log(weirdMultiply(273))
 
