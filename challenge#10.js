@@ -17,13 +17,14 @@ rl.on('line', function sentencesManipulation(sentence) {
         let j = 0;
         if (myArray[i][j] == 'a' || myArray[i][j] == 'i' || myArray[i][j] == 'u' || myArray[i][j] == 'e' || myArray[i][j] == 'o') {
 
-            arrayGabungan.push(`hasil konversi: ${myArray[i]}`)
+            arrayGabungan.push(`${myArray[i]}`)
+            break
         } else {
 
             arrayGabungan.push(myArray[i].substr(1) + myArray[i][j] + "nyo")
         }
     }
-    console.log(arrayGabungan.join(" "))
+    console.log(`hasil konversi: ${arrayGabungan.join(" ")}`)
   rl.prompt();
 }).on('close', () => {
   console.log('Good bye!');
