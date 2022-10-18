@@ -22,6 +22,13 @@ function list() {
 
 }
 
+function task(paramInputan) {
+    let berkas = ambilFile()
+    paramInputan = process.argv[3]
+    // console.log(paramInputan)
+    console.log(`tugas: ${berkas[paramInputan - 1].tugas}`)
+}
+
 function add(paramInputan) {
     let berkas = ambilFile()
     let tugas = paramInputan;
@@ -71,53 +78,42 @@ function tagTugas(namaTag, nomorTugas) {
     simpan(berkas)
 }
 
-function filterTag() {
-
+function filterTag(filterNama) {
+    let berkas = ambilFile()
+    // console.log(berkas[2].tag[0])
+    for (let i = 0; i < berkas.length; i++) {
+        for (let j = 0; j < berkas.length; j++) {
+            if (berkas[i].tag[j] == filterNama[1]) {
+                console.log(`${i + 1}. ${berkas[i].statusKer ? '[x]' : '[ ]'} ${berkas[i].tugas}`)
+            }
+        }
+        // console.log(filterNama[1])
+    }
 }
-
-// if(commandInputan.slice(0,6) == "filter") {
-//     console.log(commandInputan);
-// }
-
-switch (commandInputan) {
-    case "list":
+    if (commandInputan == "list") {
         list()
-        break;
-    case "task":
+    } else if (commandInputan == "task") {
         task(paramInputan)
-        // console.log(paramInputan)
-        break;
-    case "add":
+    } else if (commandInputan == "add") {
         let task = paramInputan.slice(3).join(" ");
         add(task)
-        break;
-    case "delete":
+    } else if (commandInputan == "delete") {
         hapus(paramInputan[3])
-        break;
-    case "complete":
+    } else if (commandInputan == "complete") {
         let selesai = paramInputan.slice(3).join(" ");
         unCcomplete(selesai)
-        break;
-    case "uncomplete":
+    } else if (commandInputan == "uncomplete") {
         let belumSelesai = paramInputan.slice(3).join(" ");
         unCcomplete(belumSelesai)
-        break;
-    case "list:outstanding":
+    } else if (commandInputan == "list:outstanding") {
         outstandingAsc()
-        break;
-    case "list:completed":
+    } else if (commandInputan == "list:completed") {
         completedAsc()
-        break;
-    case "tag":
+    } else if (commandInputan == "tag") {
         let namaTag = paramInputan.slice(4).join(",");
         let nomorTugas = process.argv[3]
         tagTugas(namaTag, nomorTugas)
-        break;
-    case commandInputan.slice(0,6) == "filter":
-        let filterTag = process.argv[2].split(":")
-        console.log(filterTag)
-        break;
-    default:
+    } else if (commandInputan == undefined) {
         console.log(">>> JS TODO <<<");
         console.log("$node challenge#13.js list");
         console.log("$node challenge#13.js task <task_id>")
@@ -129,5 +125,7 @@ switch (commandInputan) {
         console.log("$node challenge#13.js list:completed asc|desc")
         console.log("$node challenge#13.js tag <task_id> <tag_name1> <tag_name_2> ... <tag_name_N>")
         console.log("$node challenge#13.js filter:<tag_name>")
-        break;
-}
+    } else if (commandInputan.slice(0, 6) == "filter") {
+        let filterNama = process.argv[2].split(":")
+        filterTag(filterNama)
+    }
