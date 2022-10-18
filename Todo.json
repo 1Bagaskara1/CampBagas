@@ -1,0 +1,24 @@
+[
+   {
+      "tugas": "saya mau pergi ke pasar",
+      "statusKer": true,
+      "tag": [
+         "pergi",
+         "pasar"
+      ]
+   },
+   {
+      "tugas": "saya belajar koding",
+      "statusKer": false,
+      "tag": [
+         "belajar"
+      ]
+   },
+   {
+      "tugas": "saya bermain valorant",
+      "statusKer": false,
+      "tag": [
+         "main"
+      ]
+   }
+]
