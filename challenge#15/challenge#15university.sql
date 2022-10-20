@@ -13,6 +13,6 @@ SELECT mahasiswa.*, Mata_Kuliah.NamaMatkul FROM mahasiswa JOIN Mata_Kuliah ON ma
 
 select Dosen.NamaDosen, (select count(*) from Kontrak WHERE Dosen.IdDosen = Kontrak.IdDosen) as total_mahasiswa from Dosen;
 
-SELECT * FROM Mahasiswa GROUP BY Umur, idjurusan;
+SELECT * FROM Mahasiswa ORDER BY umur asc;
 
 SELECT Mahasiswa.NamaMahasiswa, Kontrak.NIM, Kontrak.Nilai, jurusan.NamaJurusan, Mata_Kuliah.NamaMatkul, Dosen.NamaDosen FROM Mahasiswa JOIN Kontrak ON Mahasiswa.NIM = Kontrak.NIM JOIN Dosen ON Kontrak.IdDosen = Dosen.IdDosen JOIN Jurusan ON Mahasiswa.idjurusan = Jurusan.IdJurusan JOIN Mata_Kuliah ON Kontrak.KodeMatkul = Mata_Kuliah.KodeMatkul WHERE NILAI > 'C';
