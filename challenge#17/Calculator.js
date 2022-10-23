@@ -2,14 +2,14 @@ const PI = 22 / 7;
 
 class Calculator {
     constructor() {
-        this.nilaiAwal = null;
+        this.nilaiAwal = 1;
         this.x = null;
     }
 
     add(value) {
-        if (this.nilaiAwal == null) {
-            this.nilaiAwal = 1;
+        if (this.nilaiAwal == 1) {
             this.value = value + this.nilaiAwal;
+            this.nilaiAwal = 0;
             return this
         } else {
             this.value += value;
@@ -47,15 +47,12 @@ class Calculator {
     }
 
     exponent(value) {
-        this.value = 1;
-        for (let i = 0; i < value; i++) {
-            this.value = this.value * this.x
-        }
+        this.value = Math.pow(this.x, value)
         return this
     }
 
     square() {
-        this.value = this.x * this.x
+        this.value = Math.pow(this.x, 2)
         return this
     }
 
