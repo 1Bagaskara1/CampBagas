@@ -1,5 +1,8 @@
 import Table from 'cli-table';
 
+
+
+
 export function drawMahasiswa(rows) {
 var tabelMahasiswa = new Table({
     head: ['No.','NIM', 'Nama Mahasiswa', 'Umur', 'Alamat', 'ID Jurusan']
@@ -21,4 +24,13 @@ export function interfaceAwal1() {
     console.log("[4] Mata Kuliah")
     console.log("[5] Kontrak")
     console.log("[6] Keluar\n")
+}
+
+export function interface1Mahasiswa() {
+    console.log("\nSilahkan pilih opsi di bawah ini :")
+    console.log("[1] Daftar Mahasiswa")
+    console.log("[2] Cari Mahasiswa")
+    console.log("[3] Tambah Mahasiswa")
+    console.log("[4] Hapus Mahasiswa")
+    console.log("[5] Kembali\n")
 }
