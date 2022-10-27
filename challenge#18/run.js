@@ -1,7 +1,8 @@
-import { showMahasiswa, interfaceAwal1Controller } from "./controllers/controller.js";
+import { showMahasiswa, interfaceAwal1Controller, showTambahMahasiswa } from "./controllers/controller.js";
 import { interfaceAwal1, interface1Mahasiswa } from "./views/view.js";
 import Table from "cli-table";
 import readline from 'readline'
+import { cari, tambahMahasiswa } from "./models/model.js";
 
 let DataLogin = [{ username: "rubi", password: "123", role: "ADMIN" }];
 
@@ -78,13 +79,13 @@ export function Inputan1Mahasiswa() {
         switch (inputanUser1Mahasiswa) {
             case '1':
                 showMahasiswa()
-                // Inputan1Mahasiswa()
                 break;
             case '2':
-                console.log("Belum jadi");
+                inputanCariMahasiswa();
                 break;
             case '3':
-                console.log("Belum jadi");
+                console.log("lengkapi data di bawah ini: ")
+                showTambahMahasiswa()
                 break;
             case '4':
                 console.log("Belum jadi");
@@ -101,6 +102,18 @@ export function Inputan1Mahasiswa() {
     });
 }
 
+export function inputanCariMahasiswa() {
+    rl.question(`Masukan NIM Mahasiswa : `, (inputanUserCariMahasiswa) => {
+        cari(inputanUserCariMahasiswa)
+    });
+}
+
+export function inputanTambahMahasiswa() {
+    rl.question(`Masukan NIM Mahasiswa : `, (inputanUserCariMahasiswa) => {
+        cari(inputanUserCariMahasiswa)
+    });
+}
+
 export function inputanUserControllerAwal() {
     console.log(inputanUserTable.toString())
     rl.question(`Masukan salah satu nomor dari opsi di atas : `, (inputanUser) => {
@@ -109,7 +122,9 @@ export function inputanUserControllerAwal() {
                 interface1Mahasiswa()
                 Inputan1Mahasiswa()
                 break;
-
+            case '6':
+                loginUsername()
+                break;
             default:
                 console.log("test")
                 break;
