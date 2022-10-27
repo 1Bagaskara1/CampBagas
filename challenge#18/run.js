@@ -1,8 +1,8 @@
-import { showMahasiswa, interfaceAwal1Controller, showTambahMahasiswa } from "./controllers/controller.js";
-import { interfaceAwal1, interface1Mahasiswa } from "./views/view.js";
+import { showMahasiswa, interfaceAwal1Controller, showTambahMahasiswa, showJurusan, showTambahMahasiswaJ, showTambahMahasiswaM, dataMahasiswaTabelAdded } from "./controllers/controller.js";
+import { interfaceAwal1, interface1Mahasiswa, drawJurusan } from "./views/view.js";
 import Table from "cli-table";
 import readline from 'readline'
-import { cari, tambahMahasiswa } from "./models/model.js";
+import { cari, deleteMahasiswa, tambahMahasiswa } from "./models/model.js";
 
 let DataLogin = [{ username: "rubi", password: "123", role: "ADMIN" }];
 
@@ -88,7 +88,7 @@ export function Inputan1Mahasiswa() {
                 showTambahMahasiswa()
                 break;
             case '4':
-                console.log("Belum jadi");
+                inputanHapusMahasiswa();
                 break;
             case '5':
                 interfaceAwal1Controller();
@@ -108,9 +108,41 @@ export function inputanCariMahasiswa() {
     });
 }
 
+export let arrayTambahMahasiswa = [];
+
 export function inputanTambahMahasiswa() {
-    rl.question(`Masukan NIM Mahasiswa : `, (inputanUserCariMahasiswa) => {
-        cari(inputanUserCariMahasiswa)
+    rl.question(`NIM : `, (inputTambahNIM) => {
+        arrayTambahMahasiswa.push(inputTambahNIM);
+        rl.question(`Nama : `, (inputTambahNama) => {
+            arrayTambahMahasiswa.push(inputTambahNama);
+            rl.question(`Umur : `, (inputTambahUmur) => {
+                arrayTambahMahasiswa.push(inputTambahUmur);
+                rl.question(`Alamat : `, (inputTambahAlamat) => {
+                    arrayTambahMahasiswa.push(inputTambahAlamat);
+                    showTambahMahasiswaJ()
+                });
+            });
+        });
+    });
+}
+
+export function inputanTambahMahasiswaJ() {
+    rl.question(`id jurusan : `, (inputTambahidjurusan) => {
+        arrayTambahMahasiswa.push(inputTambahidjurusan);
+        showTambahMahasiswaM()
+    });
+}
+
+export function inputanTambahMahasiswaM() {
+    rl.question(`Kode Matkul : `, (inputTambahKM) => {
+        arrayTambahMahasiswa.push(inputTambahKM);
+        dataMahasiswaTabelAdded()
+    });
+}
+
+export function inputanHapusMahasiswa() {
+    rl.question(`Masukan NIM Mahasiswa : `, (inputanUserHapusMahasiswa) => {
+        deleteMahasiswa(inputanUserHapusMahasiswa)
     });
 }
 

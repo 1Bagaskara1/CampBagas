@@ -15,16 +15,42 @@ var interface1MahasiswaTable = new Table({
 interface1MahasiswaTable.push([])
 
 export function drawMahasiswa(rows) {
-var tabelMahasiswa = new Table({
-    head: ['No.','NIM', 'Nama Mahasiswa', 'Umur', 'Alamat', 'ID Jurusan', 'Kode Matkul']
-  , colWidths: [5, 15, 25, 15, 10, 15, 15]
-});
+    var tabelMahasiswa = new Table({
+        head: ['No.', 'NIM', 'Nama Mahasiswa', 'Umur', 'Alamat', 'ID Jurusan', 'Kode Matkul']
+        , colWidths: [5, 15, 25, 15, 10, 15, 15]
+    });
 
     rows.forEach((item, index) => {
         tabelMahasiswa.push([index + 1, item.NIM, item.NamaMahasiswa, item.umur, item.Alamat, item.idjurusan, item.KodeMatkul])
     })
 
     console.log(tabelMahasiswa.toString())
+}
+
+export function drawJurusan(rows) {
+    var tabelJurusan = new Table({
+        head: ['Kode Jurusan', 'Nama Jurusan']
+        , colWidths: [20, 20]
+    });
+
+    rows.forEach((item, index) => {
+        tabelJurusan.push([item.idjurusan, item.namajurusan])
+    })
+
+    console.log(`${tabelJurusan.toString()}`)
+}
+
+export function drawMataKuliah(rows) {
+    var tabelMatkul = new Table({
+        head: ['Kode Matkul', 'Nama Matkul']
+        , colWidths: [20, 20]
+    });
+
+    rows.forEach((item, index) => {
+        tabelMatkul.push([item.KodeMatkul, item.NamaMatkul])
+    })
+
+    console.log(`${tabelMatkul.toString()}`)
 }
 
 export function tulisCariMahasiswa(rows) {
@@ -37,7 +63,7 @@ export function tulisCariMahasiswa(rows) {
         console.log(`Jurusan : ${item.idjurusan}\n`)
 
     })
-    
+
 }
 
 export function interfaceAwal1() {
